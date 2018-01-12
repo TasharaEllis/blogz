@@ -2,10 +2,21 @@
 
 {% block content %}
 
-    <h1>{{ blog.title }}</h1>
-    <p>{{ blog.body }}</p>
-    <p>{{ blog.created }}</p>
-    
+    <h1>Blog Posts!</h1>
+
+    {% for post in posts %}
+
+    <div>
+
+        <a href="/blog?id={{post.id}}"><p><h2>{{ post.title }}</h2></p></a>
+        <p>{{ post.body }}</p>
+        <p>Posted on: {{ post.created }}</p>
+        <p>Posted by: <a href="/blog?userid={{post.owner_id}}">{{ post.owner.username }}</a></p>
+        
+    </div>
+        
+    {% endfor %}
+   
 {% endblock %}
  
 
